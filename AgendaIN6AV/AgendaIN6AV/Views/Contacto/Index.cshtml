@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AgendaIN6AV.Contacto>
+
+@{
+    ViewBag.Title = "Contactos";
+}
+@if (Session["idUsuario"] != null) {
+<h2>Contactos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Contacto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correoElectronico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoElectronico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idContacto }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.idContacto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.idContacto })
+        </td>
+    </tr>
+}
+
+</table>
+}
+else
+{
+    <h1 style="text-align:center">Por favor @Html.ActionLink("inicie sesión", "Login", "Cuenta") para acceder al contenido.</h1>
+}

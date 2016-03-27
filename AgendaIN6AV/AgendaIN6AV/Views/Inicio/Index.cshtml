@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+<link href="~/Content/custom.css" rel="stylesheet" type="text/css" />
+@if (Session["idUsuario"] != null) { 
+<div class="jumbotron">
+    <h1>AGENDA IN6AV</h1>
+    <p class="lead">Servicio de almacenamiento de contactos en la nube.</p>
+    <p><a href="@Url.Action("Index","Contacto")" class="btn btn-primary btn-lg">Ver Contactos &raquo;</a></p>
+</div>
+
+}else{
+    <h1 style="text-align:center">Por favor @Html.ActionLink("inicie sesión","Login","Cuenta") para acceder al contenido.</h1>
+}
